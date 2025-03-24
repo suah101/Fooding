@@ -117,3 +117,21 @@ dependencies {
         implementation jscFlavor
     }
 }
+buildscript {
+    repositories {
+        google()  // ✅ 이 부분이 없으면 추가
+        mavenCentral()
+    }
+    dependencies {
+        classpath("com.android.tools.build:gradle:8.0.2")  // 최신 버전 유지
+        classpath("com.google.gms:google-services:4.4.2")  // Firebase 관련
+    }
+}
+
+allprojects {
+    repositories {
+        google()  // ✅ 이 부분이 없으면 추가
+        mavenCentral()
+    }
+}
+apply plugin: 'com.google.gms.google-services'
