@@ -1,40 +1,47 @@
-// /screens/HomeScreen.tsx
 import React from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
 
-export default function HomeScreen() {
+export default function HomeScreen({ navigation }: any) {
   return (
-    <ScrollView style={styles.container}>
-      <Text style={styles.greeting}>👋 안녕하세요, 수아님!</Text>
+    <View style={{ flex: 1 }}>
+      {/* 오른쪽 상단 프로필 아이콘 */}
+      <TouchableOpacity style={styles.profileIcon} onPress={() => navigation.navigate('MyPage')}>
+        <Icon name="person-circle-outline" size={30} color="#5C4B3B" />
+      </TouchableOpacity>
 
-      {/* Section 1: 유통기한 임박 */}
-      <View style={styles.section}>
-        <Text style={styles.sectionTitle}>⏰ 임박한 식재료</Text>
-        <Text>🥛 우유 - 2일 남음</Text>
-        <Text>🍎 사과 - 내일 만료</Text>
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>전체 보기</Text>
-        </TouchableOpacity>
-      </View>
+      <ScrollView style={styles.container}>
+        <Text style={styles.greeting}>👋 안녕하세요, 수아님!</Text>
 
-      {/* Section 2: 폐기량 요약 */}
-      <View style={styles.section}>
-        <Text style={styles.sectionTitle}>📊 이번 달 폐기량</Text>
-        <Text>사과 2개, 우유 1팩</Text>
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>자세히 보기</Text>
-        </TouchableOpacity>
-      </View>
+        {/* Section 1: 유통기한 임박 */}
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>⏰ 임박한 식재료</Text>
+          <Text>🥛 우유 - 2일 남음</Text>
+          <Text>🍎 사과 - 내일 만료</Text>
+          <TouchableOpacity style={styles.button}>
+            <Text style={styles.buttonText}>전체 보기</Text>
+          </TouchableOpacity>
+        </View>
 
-      {/* Section 3: 레시피 추천 */}
-      <View style={styles.section}>
-        <Text style={styles.sectionTitle}>🍳 오늘의 레시피 추천</Text>
-        <Text>크림 파스타 (🧀 치즈, 🥛 우유)</Text>
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>더 보기</Text>
-        </TouchableOpacity>
-      </View>
-    </ScrollView>
+        {/* Section 2: 폐기량 요약 */}
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>📊 이번 달 폐기량</Text>
+          <Text>사과 2개, 우유 1팩</Text>
+          <TouchableOpacity style={styles.button}>
+            <Text style={styles.buttonText}>자세히 보기</Text>
+          </TouchableOpacity>
+        </View>
+
+        {/* Section 3: 레시피 추천 */}
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>🍳 오늘의 레시피 추천</Text>
+          <Text>크림 파스타 (🧀 치즈, 🥛 우유)</Text>
+          <TouchableOpacity style={styles.button}>
+            <Text style={styles.buttonText}>더 보기</Text>
+          </TouchableOpacity>
+        </View>
+      </ScrollView>
+    </View>
   );
 }
 
@@ -47,6 +54,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     marginBottom: 10,
     color: '#5C4B3B',
+    marginTop: 60,
   },
   section: {
     marginVertical: 15,
@@ -73,5 +81,11 @@ const styles = StyleSheet.create({
   buttonText: {
     color: '#fff',
     textAlign: 'center',
+  },
+  profileIcon: {
+    position: 'absolute',
+    top: 20,
+    right: 20,
+    zIndex: 10,
   },
 });
